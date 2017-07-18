@@ -6,7 +6,6 @@ namespace App;
 class DB
 {
     protected $dbh;
-    //const TABLE = 'user';
 
     public function __construct()
     {
