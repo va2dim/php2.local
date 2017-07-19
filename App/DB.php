@@ -13,15 +13,15 @@ class DB
         $this->dbh = new \PDO($dsn,'root','');
     }
 
-    public function execute($sql){
+    public function execute($sql, array $substitutionData = []){
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute();
+        $res = $sth->execute($substitutionData);
         return $res;
     }
 
-    public function query($sql, $class){
+    public function query($sql, $class, array $substitutionData = []){
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute();
+        $res = $sth->execute($substitutionData);
         if(false !== $res) { // !== - жесткое неравенство со сравнением по типу
             $res = $sth->fetchAll(\PDO::FETCH_CLASS, $class);
             return $res;

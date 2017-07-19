@@ -9,6 +9,15 @@ abstract class Model
 
     public static function findAll(){
         $db = new \App\DB();
-        return $db->query('SELECT * FROM '. static::TABLE, static::class);
+        return $db->query('SELECT * FROM '.static::TABLE, static::class);
+    }
+
+    public static function findById (int $id = 1){
+        $db = new \App\DB();
+        $res = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id]);
+        //return $res;
+
+        if (sizeof($res)>0) return $res;
+        else return false;
     }
 }
