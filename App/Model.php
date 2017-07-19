@@ -8,12 +8,12 @@ abstract class Model
     const TABLE = '';
 
     public static function findAll(){
-        $db = new \App\DB();
+        $db = DB::instance();
         return $db->query('SELECT * FROM '.static::TABLE, static::class);
     }
 
     public static function findById (int $id = 1){
-        $db = new \App\DB();
+        $db = DB::instance();
         $res = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id]);
         //return $res;
 
