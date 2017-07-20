@@ -3,8 +3,10 @@
 namespace App;
 
 
-class DB extends Singletone
+class DB
 {
+    use Singletone;
+
     protected $dbh;
 
     protected function __construct()
