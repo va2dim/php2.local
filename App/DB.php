@@ -11,13 +11,23 @@ class DB
 
     protected function __construct()
     {
-        $dsn = "mysql:host=127.0.0.1;dbname=test";
+        $config = Config::instance();
+        //echo $config->data['db']['host'];
+        $dsn = $config->data['dbdriver'].':host='.$config->data['host'].';dbname='.$config->data['dbname'];
+            //"mysql:host=127.0.0.1;dbname=test";
+        echo $dsn;
         $this->dbh = new \PDO($dsn,'root','');
     }
 
     public function execute($sql, array $substitutionData = []){
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute($substitutionData);
+
+        echo "\nPDOStatement::errorInfo():\n";
+        print_r($sth->errorInfo());
+        echo "\nPDOStatement::errorCode(): ";
+        print $sth->errorCode();
+
         return $res;
     }
 
