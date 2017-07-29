@@ -15,7 +15,7 @@ class DB
         //echo $config->data['db']['host'];
         $dsn = $config->data['dbdriver'].':host='.$config->data['host'].';dbname='.$config->data['dbname'];
             //"mysql:host=127.0.0.1;dbname=test";
-        echo $dsn;
+        //echo $dsn;
         $this->dbh = new \PDO($dsn,'root','');
     }
 
@@ -34,8 +34,8 @@ class DB
     public function query($sql, $class, array $substitutionData = []){
         $sth = $this->dbh->prepare($sql);
         $res = $sth->execute($substitutionData);
-        var_dump($substitutionData);
-        echo $sql."<br>";
+        //var_dump($substitutionData);
+        //echo $sql."<br>";
         if(false !== $res) { // !== - жесткое неравенство со сравнением по типу
             $res = $sth->fetchAll(\PDO::FETCH_CLASS, $class);
             return $res;

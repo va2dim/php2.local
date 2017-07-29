@@ -3,6 +3,8 @@
 require __DIR__ . '/autoload.php';
 
 use App\Models\User;
+use App\View;
+
 /*
 $news = \App\Models\News::findLast(2);
 var_dump($news);
@@ -17,4 +19,7 @@ $user->email = 'a@pup.eu';
 var_dump($user->save());
 */
 
-include __DIR__ . '/App/templates/index.php';
+$view = new View;
+$view->users = User::findAll();
+//var_dump($view->users);
+echo $view->render(__DIR__.'/App/templates/index.php');

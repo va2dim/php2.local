@@ -18,7 +18,14 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1>Админка пользователей</h1>
+
+    <?php foreach($this->users as $user): ?>
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo $user->id.'. '.$user->name; ?></div>
+        <div class="panel-body"><?php echo $user->email; ?></div>
+    </div>
+    <?php endforeach;?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
