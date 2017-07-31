@@ -1,34 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        .news{
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px dotted green;
-            font-family: 'Droid sans', 'Lucida Grande', sans-serif;
-            font-size: 12px;
-        }
-        title_ {
-            font-weight: bold;
-            font-size: 14px;
-            padding: 5px;
-            margin: 5px;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
+<h1>Последние новости</h1>
 
-<?php
 
-foreach($news as $new){?>
-    <div class="news">
-        <title_><?php echo $new->title ?></title_>
-        <text><?php echo $new->text ?></text>
-        <dtoc><?php echo $new->datatime_of_creation ?></dtoc>
+<?php foreach($news as $onenews): ?>
+    <div class = "panel panel-primary">
+        <div class = "panel-heading"><?php echo $onenews->title ?></div>
+        <div class = "panel-body"><?php echo $onenews->text ?></div>
+        <div class = "panel-footer"><?php echo $onenews->author_id.' '.$onenews->datatime_of_creation ?></div>
     </div>
-<?php
-}
-?>
+<?php endforeach;?>
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
