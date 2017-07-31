@@ -35,8 +35,25 @@ class News extends Model
     public function getAuthor(){
 
         //echo self::$data["news"]["author_id"];
-        var_dump(self::$data);
+        //var_dump(self::$data);
     }
 
+    /**
+     * LAZY LOAD
+     *
+     * @param $name
+     * @return bool|null
+     */
+    function __get($name)
+    {
+        switch ($name){
+            case 'author':
+                //echo 'a: '.$this->author_id.'||';
+                return Author::findById($this->author_id);
+                break;
+            default:
+                return null;
+        }
 
+    }
 }
