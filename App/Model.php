@@ -13,12 +13,18 @@ abstract class Model
         return $db->query('SELECT * FROM '.static::TABLE, static::class);
     }
 
-    public static function findById (int $id = 1){
+    /**
+     * @param int $id
+     * @return bool || Object содержащий рез-т выборки
+     */
+    public static function findById ($id = 1){
         $db = DB::instance();
-        $res = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id]);
-        //return $res;
+        $res = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id])[0]; // +[0] превращает массив из одного obj в obj;
+        //$res1 = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id]); var_dump($res1);
+        var_dump($res);
 
-        if (sizeof($res)>0) return $res;
+
+        if (!empty($res)) return $res;
         else return false;
     }
 

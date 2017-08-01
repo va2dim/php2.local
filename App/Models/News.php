@@ -44,7 +44,7 @@ class News extends Model
      * @param $name
      * @return bool|null
      */
-    function __get($name)
+    public function __get($name)
     {
         switch ($name){
             case 'author':
@@ -53,6 +53,18 @@ class News extends Model
                 break;
             default:
                 return null;
+        }
+
+    }
+
+    public function __isset($name)
+    {
+        switch ($name){
+            case 'author':
+                return !empty($this->author_id);
+                break;
+            default:
+                return false;
         }
 
     }

@@ -21,11 +21,19 @@
 <h1>Последние новости</h1>
 
 
-<?php foreach($news as $onenews): ?>
+<?php foreach($news as $article): ?>
     <div class = "panel panel-primary">
-        <div class = "panel-heading"><?php echo $onenews->title ?></div>
-        <div class = "panel-body"><?php echo $onenews->text ?></div>
-        <div class = "panel-footer"><?php echo $onenews->author_id.' '.$onenews->datatime_of_creation ?></div>
+        <div class = "panel-heading"><?php echo $article->title ?></div>
+        <div class = "panel-body"><?php echo $article->text ?></div>
+        <div class = "panel-footer">
+            <?php
+                if(isset($article->author)):
+                    //var_dump($article->author);
+                    echo $article->author->name;
+                endif;
+                echo $article->datatime_of_creation;
+            ?>
+        </div>
     </div>
 <?php endforeach;?>
 
