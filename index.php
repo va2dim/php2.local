@@ -3,13 +3,11 @@
 require __DIR__ . '/autoload.php';
 
 use App\Models\User;
+use App\Models\News;
 use App\View;
 
-/*
-$news = \App\Models\News::findLast(2);
-var_dump($news);
-include __DIR__ . '/App/Templates/index.php';
-*/
+$controller = new App\Controllers\News();
+$controller->action('Index');
 
 /*
 $user = new User();
@@ -19,7 +17,18 @@ $user->email = 'a@pup.eu';
 var_dump($user->save());
 */
 
+
+
+/*
+unset($view);
 $view = new View;
 $view->users = User::findAll();
-//var_dump($view->users);
 echo $view->render(__DIR__.'/App/templates/index.php');
+*/
+/*
+echo count($view);//.'--'.$view->count();
+$view->count_ = null;
+if (!isset($view->count_)) echo ' Check in Count_isset(obj) done!';
+if (empty($view->count_)) echo ' Check in Count_empty(obj) done!';
+*/
+
