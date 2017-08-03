@@ -30,14 +30,22 @@ class News
     }
 
     /**
+     * Страница со всеми новостями сайта
      * То, что action должен сделать - его конкретное дейтсвие
      *
      */
     protected function actionIndex() {
-
         //$this->view->news = News::findLast(3);
         $this->view->news = \App\Models\News::findAll();
         $this->view->display(__DIR__ . '/../templates/news_index.php');
     }
 
+    /**
+     * ActionArticle
+     */
+    protected function actionOne() {
+        $id = (int) $_GET['id'];
+        $this->view->article = \App\Models\News::findById($id);
+        $this->view->display(__DIR__ . '/../templates/one.php');
+    }
 }
