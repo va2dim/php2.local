@@ -6,9 +6,15 @@ use App\Models\User;
 use App\Models\News;
 use App\View;
 
+/**
+ * FrontController - единая т.входа на сайт
+ * Определяет какой action нужно вызвать
+ */
 $controller = new App\Controllers\News();
-$controller->action('Index');
+$action = $_GET['action']?:'Index';
 
+$controller->action($action);
+var_dump($action);
 /*
 $user = new User();
 $user->id = 9;
