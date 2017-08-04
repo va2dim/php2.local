@@ -18,10 +18,9 @@
     <![endif]-->
 </head>
 <body>
-<h1>Последние новости</h1>
+<h1>Запрошенная новость</h1>
 
 
-<?php foreach($news as $article): ?>
     <div class = "panel panel-primary">
         <div class = "panel-heading"><?php echo $article->title ?></div>
         <div class = "panel-body"><?php echo $article->text ?></div>
@@ -35,7 +34,7 @@
             ?>
         </div>
     </div>
-<?php endforeach;?>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

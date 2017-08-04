@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,23 +13,34 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <h1>Админка пользователей</h1>
+</head>
+<body>
+<h1>Последние новости</h1>
 
-    <?php foreach($users as $user): ?>
-    <div class="panel panel-info">
-        <div class="panel-heading"><?php echo $user->id.'. '.$user->name; ?></div>
-        <div class="panel-body"><?php echo $user->email; ?></div>
+
+<?php foreach($news as $article): ?>
+    <div class = "panel panel-primary">
+        <div class = "panel-heading"><?php echo $article->title ?></div>
+        <div class = "panel-body"><?php echo $article->text ?></div>
+        <div class = "panel-footer">
+            <?php
+                if(isset($article->author)):
+                    //var_dump($article->author);
+                    echo $article->author->name;
+                endif;
+                echo $article->datatime_of_creation;
+            ?>
+        </div>
     </div>
-    <?php endforeach;?>
+<?php endforeach;?>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+</body>
 </html>
+

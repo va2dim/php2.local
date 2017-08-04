@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * TODO __autoload
+ * @return false если файл класса не найден - use если несколько ф-ций __autoload, тогда spl_autoload_register() принимает эти ф-ции и + в стэк.
+ *
  * App\Models\User => ./App/Models/User.php
  */
     function __autoload($class_name){
