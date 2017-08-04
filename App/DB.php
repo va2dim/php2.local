@@ -12,10 +12,7 @@ class DB
     protected function __construct()
     {
         $config = Config::instance();
-        //echo $config->data['db']['host'];
-        $dsn = $config->data['dbdriver'].':host='.$config->data['host'].';dbname='.$config->data['dbname'];
-            //"mysql:host=127.0.0.1;dbname=test";
-        //echo $dsn;
+        $dsn = $config->data['db']['driver'].':host='.$config->data['db']['host'].';dbname='.$config->data['db']['name'];
         $this->dbh = new \PDO($dsn,'root','');
     }
 
