@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\News;
 use App\View;
 
+//TODO HT4. разобрать REQUEST_URI на Controller и action
+$url = $_SERVER['REQUEST_URI'];
+
 /**
  * FrontController - единая т.входа на сайт
  * Определяет какой action нужно вызвать
