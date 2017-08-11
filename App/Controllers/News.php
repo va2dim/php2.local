@@ -5,29 +5,8 @@ namespace App\Controllers;
 use App\View;
 //use App\Models\News;
 
-class News
+class News extends Index
 {
-    protected $view;
-
-    public function __construct(){
-        $this->view = new View;
-    }
-
-    /**
-     * Proxy Action
-     * У всего С в целом можем проводить какие-то действия до action в beforeAction()
-     * @param $action
-     * @return mixed
-     */
-    public function action($action){
-        $methodName = 'action'.$action;
-        $this->beforeAction();
-        return $this->$methodName();
-    }
-
-    public function beforeAction(){
-
-    }
 
     /**
      * Страница со всеми новостями сайта
