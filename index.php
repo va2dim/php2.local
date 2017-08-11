@@ -2,22 +2,40 @@
 
 require __DIR__ . '/autoload.php';
 
+/*
 use App\Models\User;
 use App\Models\News;
 use App\View;
+*/
 
-//TODO HT4. разобрать REQUEST_URI на Controller и action
+//TODO HT4. разобрать REQUEST_URI на Controller и action и проверить (на стороне Apache) нет ли запроса реального файла или папки (.css, .js)
+// index.php?ctrl=CTRL&act=ACT
+
 $url = $_SERVER['REQUEST_URI'];
+
+//$matches = [ctrl]
+//$str = 'It rains cts, cats, caats, caaats & dogs.';
+$str = "It rains cats    \n& dogs.";
+echo $str."<br>";
+preg_match_all(
+   // ['`ctrl=.&`', '`act=.+`'],
+'`cats.+&`',
+    $str,
+    $matches
+);
+
+var_dump($matches);
+die;
 
 /**
  * FrontController - единая т.входа на сайт
  * Определяет какой action нужно вызвать
  */
 $controller = new App\Controllers\News();
-$action = $_GET['action']?:'Index';
-
-$controller->action($action);
+$action = $_GET['act']?:'Index';
 var_dump($action);
+$controller->action($action);
+
 /*
 $user = new User();
 $user->id = 9;
