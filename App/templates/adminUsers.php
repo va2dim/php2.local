@@ -31,7 +31,13 @@
 
     <?php foreach($users as $user): ?>
     <div class="panel panel-info">
-        <div class="panel-heading"><?php echo $user->id.'. '.$user->name; ?></div>
+        <div class="panel-heading">
+            <a href="?ctrl=admin&act=saveUser&id=<?php echo $user->id; ?>">
+                <?php echo $user->id.'. '.$user->name; ?>
+
+                <span class="glyphicon glyphicon-edit"  aria-label="Редактировать"></span>
+            </a>
+        </div>
         <div class="panel-body"><?php echo $user->email; ?></div>
     </div>
     <?php endforeach;?>
@@ -46,7 +52,7 @@
               <div class="form-group">
                   <label for="name" class="col-lg-2 control-label">Пользователь</label>
                   <div class="col-lg-10">
-                      <input class="form-control" id="name" name="name" placeholder="Имя пользователя" type="text">
+                      <input class="form-control" id="name" name="name" placeholder="Имя пользователя" type="text" value="<?php echo $user->name; ?>">
                   </div>
                   <label for="email" class="col-lg-2 control-label">e-mail</label>
                   <div class="col-lg-10">

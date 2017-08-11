@@ -24,7 +24,7 @@ class Admin
     }
 
 
-    protected function actionAddUser() {
+    protected function actionSaveUser() {
 
 
         if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -34,6 +34,7 @@ class Admin
         else {
 
             $user = new User();
+            $user->id = (int)$_GET['id'];
             $user->email = $_POST['email'];
             $user->name = $_POST['name'];
             echo '$$$$$$$$$$$$$'; //var_dump($user);

@@ -22,18 +22,22 @@
 
 
 <?php foreach($news as $article): ?>
-    <div class = "panel panel-primary">
-        <div class = "panel-heading"><?php echo $article->title; ?></div>
-        <div class = "panel-body"><?php echo $article->text; ?></div>
+    <div class = "panel panel-info">
+        <div class = "panel-heading"><a href="?ctrl=news&act=one&id=<?php echo $article->id; ?>"><?php echo $article->title; ?></a></div>
+        <div class = "panel-body"><?php echo $article->text; ?><a href="?ctrl=news&act=one&id=<?php echo $article->id; ?>"><span class="glyphicon glyphicon-expand"  aria-label=">>>"></span> </a></div>
         <div class = "panel-footer">
-            <?php if(isset($article->author)): ?>
-            <div>
-                <?php echo $article->author->name; ?>
+
+            <div class="row">
+                <?php if(isset($article->author)): ?>
+                <div class="col-md-10">
+                    <?php echo $article->author->name; ?>
+                </div>
+                <?php endif; ?>
+                <div class="col-md-2 text-right">
+                    <?php echo $article->datatime_of_creation; ?>
+                </div>
             </div>
-            <?php endif; ?>
-            <div>
-            <?php echo $article->datatime_of_creation; ?>
-            </div>
+
         </div>
     </div>
 <?php endforeach;?>
