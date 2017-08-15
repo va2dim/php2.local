@@ -25,13 +25,16 @@
         <div class = "panel-heading"><?php echo $article->title ?></div>
         <div class = "panel-body"><?php echo $article->text ?></div>
         <div class = "panel-footer">
-            <?php
-                if(isset($article->author)):
-                    //var_dump($article->author);
-                    echo $article->author->name;
-                endif;
-                echo $article->datatime_of_creation;
-            ?>
+            <div class="row">
+                    <?php if(isset($article->author)): ?>
+                        <div class="col-md-10">
+                            <?php echo $article->author->name; ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="col-md-2 text-right">
+                        <?php echo $article->datatime_of_creation; ?>
+                    </div>
+            </div>
         </div>
     </div>
 

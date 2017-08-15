@@ -21,7 +21,7 @@ abstract class Model
         $db = DB::instance();
         $res = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id])[0]; // +[0] превращает массив из одного obj в obj;
         //$res1 = $db->query('SELECT * FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id]); var_dump($res1);
-        var_dump($res);
+        //var_dump($res);
 
 
         if (!empty($res)) return $res;
@@ -45,7 +45,7 @@ abstract class Model
             $columns[] = $k;
             $values[':'.$k] = $v;
         }
-        var_dump($values);
+        //var_dump($values);
         return $columns.$values;
     }
 

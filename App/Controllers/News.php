@@ -24,6 +24,7 @@ class News extends Index
      */
     protected function actionOne() {
         $id = (int)$_GET['id'];
+        //var_dump($this->view);
         $this->view->article = \App\Models\News::findById($id);
         $this->view->display(__DIR__ . '/../templates/one.php');
     }

@@ -18,25 +18,14 @@
     <![endif]-->
 </head>
 <body>
-<h1>Все новости</h1>
 
+<div class = "panel panel-primary">
+        <div class = "panel-heading">Регистрация</div>
+            <div class = "panel-body">Логин: <?php echo $user->name; ?></div>
+<div class = "panel-body">Пароль: <?php echo $user->password; ?></div>
+<div class = "panel-footer">        </div>
+</div>
 
-<?php foreach($news as $article): ?>
-    <div class = "panel panel-primary">
-        <div class = "panel-heading"><?php echo $article->title; ?></div>
-        <div class = "panel-body"><?php echo $article->text; ?></div>
-        <div class = "panel-footer">
-            <?php if(isset($article->author)): ?>
-            <div>
-                <?php echo $article->author->name; ?>
-            </div>
-            <?php endif; ?>
-            <div>
-            <?php echo $article->datatime_of_creation; ?>
-            </div>
-        </div>
-    </div>
-<?php endforeach;?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -44,4 +33,3 @@
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-

@@ -15,6 +15,8 @@ class User extends Model
     const TABLE = 'users';
     public $name;
     public $email;
+    public $login;
+    public $password;
 
     /**
      * Метод, возвращающий адрес e-mail

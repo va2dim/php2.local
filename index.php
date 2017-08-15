@@ -12,29 +12,30 @@ use App\View;
 // index.php?ctrl=CTRL&act=ACT
 
 $url = $_SERVER['REQUEST_URI'];
-
-//$matches = [ctrl]
-//$str = 'It rains cts, cats, caats, caaats & dogs.';
-$str = "It rains cats    \n& dogs.";
-echo $str."<br>";
 preg_match_all(
-   // ['`ctrl=.&`', '`act=.+`'],
-'`cats.+&`',
-    $str,
+    '`ctrl=(?P<ctrl>.+)&act=(?P<act>.+)`',
+    $url,
     $matches
 );
+//echo $matches['ctrl'][0].$matches['act'][0];
 
-var_dump($matches);
-die;
 
 /**
  * FrontController - единая т.входа на сайт
  * Определяет какой action нужно вызвать
  */
+$ctrl = $_GET['ctrl'] ?: 'Index';
+$act = $_GET['act'] ?: 'Index';
 $controller = new App\Controllers\News();
-$action = $_GET['act']?:'Index';
-var_dump($action);
-$controller->action($action);
+
+//var_dump($_GET['ctrl']);
+try {
+    $controller->action($act);
+} catch (\App\Exceptions\Core $e) {
+    echo 'Возникло исключение приложения: ' . $e->getMessage();
+} catch (\App\Exceptions\DB $e) {
+    echo 'Что-то не так с БД: ' . $e->getMessage();
+}
 
 /*
 $user = new User();
@@ -43,7 +44,6 @@ $user->name = 'Амандус Пуп';
 $user->email = 'a@pup.eu';
 var_dump($user->save());
 */
-
 
 
 /*
