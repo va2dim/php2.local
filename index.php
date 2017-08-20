@@ -26,9 +26,22 @@ preg_match_all(
  */
 $ctrl = $_GET['ctrl'] ?: 'Index';
 $act = $_GET['act'] ?: 'Index';
-$controller = new App\Controllers\News();
 
+echo '_GET: ';
+var_dump($_GET);
+echo '<br>_POST: ';
+var_dump($_POST);
+echo '<br>_REQUEST: ';
+var_dump($_REQUEST);
+echo '<hr>';
+
+$controller = new App\Controllers\News();
 //var_dump($_GET['ctrl']);
+
+
+$controller->action($act);
+
+/*
 try {
     $controller->action($act);
 } catch (\App\Exceptions\Core $e) {
@@ -36,6 +49,18 @@ try {
 } catch (\App\Exceptions\DB $e) {
     echo 'Что-то не так с БД: ' . $e->getMessage();
 }
+*/
+
+/*
+try {
+    $controller->action($act);
+} catch (\App\MultiException $e) {
+    $view = new View();
+    $view->errors = $e;
+} finally {
+    $view->display(__DIR__ . '/App/templates/exceptions.php');
+}
+*/
 
 /*
 $user = new User();

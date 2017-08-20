@@ -21,7 +21,7 @@
 <h1>Запрошенная новость</h1>
 
 
-    <div class = "panel panel-primary">
+    <div class = "panel panel-info">
         <div class = "panel-heading"><?php echo $article->title ?></div>
         <div class = "panel-body"><?php echo $article->text ?></div>
         <div class = "panel-footer">

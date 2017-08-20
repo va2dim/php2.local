@@ -5,6 +5,7 @@ namespace App\Models;
 
 use App\Model;
 use App\DB;
+use App\MultiException;
 
 class News extends Model
 {
@@ -32,11 +33,6 @@ class News extends Model
         return $db->query('SELECT * FROM '.static::TABLE.' ORDER BY id DESC LIMIT 3', static::class, [':l' => $limit]);
     }
 
-    public function getAuthor(){
-
-        //echo self::$data["news"]["author_id"];
-        //var_dump(self::$data);
-    }
 
     /**
      * LAZY LOAD
@@ -67,5 +63,19 @@ class News extends Model
                 return false;
         }
 
+    }
+
+    public function fill($data = [])
+    {
+        // С помощью MultiException собираем в 1 контейнер все возможные исключения
+        // TODO Реализовать проверку заголовка и текста новости
+        $e = new MultiException();
+        if (true) {
+            $e[] = new \Exception('Заголовок неверный');
+        }
+        if (true) {
+            $e[] = new \Exception('Текст неверный');
+        }
+        throw $e;
     }
 }

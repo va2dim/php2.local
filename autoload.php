@@ -10,4 +10,7 @@
 function __autoload($class_name)
 {
     require __DIR__ . '/' . str_replace('\\', '/', $class_name) . '.php';
+
+    // SPL composer сам делает
+    //include __DIR__ . '/vendor/autoload.php';
 }

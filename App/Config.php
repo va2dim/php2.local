@@ -4,12 +4,18 @@ namespace App;
 
 
 class Config
+    implements \ArrayAccess//, \Iterator
 {
     use Singletone;
-    public $data;
+    use TCollection;
+
+    public $item;
 
     protected function __construct() {
-        $this->data = require __DIR__ . '/../config.php';
+
+        //self::$instance =
+        $this->item = include __DIR__ . '/../config.php';
+        //var_dump(self::$instance);
     }
 
 }

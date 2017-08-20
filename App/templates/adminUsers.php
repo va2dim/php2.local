@@ -32,10 +32,12 @@
     <?php foreach($users as $user): ?>
     <div class="panel panel-info">
         <div class="panel-heading">
-            <a href="?ctrl=admin&act=saveUser&id=<?php echo $user->id; ?>">
-                <?php echo $user->id.'. '.$user->name; ?>
-
-                <span class="glyphicon glyphicon-edit"  aria-label="Редактировать"></span>
+            <a href="?ctrl=admin&act=changeUser&id=<?php echo $user->id; ?>">
+                <?php echo $user->id.'. '.$user->name; ?> -
+                <span class="glyphicon glyphicon-edit"  aria-label="Редактировать">E</span>
+            </a> -
+            <a href="?ctrl=admin&act=deleteUser&id=<?php echo $user->id; ?>">
+                <span class="glyphicon glyphicon-delete"  aria-label="Удалить">x</span>
             </a>
         </div>
         <div class="panel-body"><?php echo $user->email; ?></div>
@@ -46,27 +48,7 @@
 
 
 
-    <form role="form" action="admin.php?ctrl=admin&act=addUser" method="POST" class="form-horizontal novalidate">
-          <fieldset>
-              <legend>Добавление/Редактирование пользователя</legend>
-              <div class="form-group">
-                  <label for="name" class="col-lg-2 control-label">Пользователь</label>
-                  <div class="col-lg-10">
-                      <input class="form-control" id="name" name="name" placeholder="Имя пользователя" type="text" value="<?php echo $user->name; ?>">
-                  </div>
-                  <label for="email" class="col-lg-2 control-label">e-mail</label>
-                  <div class="col-lg-10">
-                      <input class="form-control" id="email" name="email" placeholder="Адрес электронной почты" type="email">
-                  </div>
-              </div>
-              <div class="form-group">
-                  <div class="col-lg-10 col-lg-offset-2">
-                      <button type="reset" class="btn btn-default">Cбросить</button>
-                      <button type="submit" class="btn btn-primary">Добавить</button>
-                  </div>
-              </div>
-          </fieldset>
-      </form>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

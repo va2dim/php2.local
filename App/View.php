@@ -9,21 +9,30 @@ class View
 {
     use Magic;
 
-    function render($template) {
+    function render($template)
+    {
         //var_dump(static::$data);
+        /*
         foreach (static::$data as $prop => $value ) {
 //            /$$prop = $value;
-            echo $prop. '='; var_dump($value); echo "333<hr>";
+            //echo $prop. '='; var_dump($value); echo "333<hr>";
             //echo $value->id;
         }
+        */
         //echo $news;
-        
+
         ob_start();
-        foreach (static::$data as $prop => $value ) {
+        foreach (static::$data as $prop => $value) {
             $$prop = $value;
         }
 
-        include $template;
+
+        if (false == include $template) {
+            $e = new MultiException();
+            $e[] = new \App\Exceptions\Core('Ошибка 404 - файл-шаблон '.$template.' не найден');
+            throw $e;
+        }
+
 
         $content = ob_get_contents();
         ob_end_clean();
@@ -31,7 +40,8 @@ class View
         return $content;
     }
 
-    function display($template) {
+    function display($template)
+    {
         echo $this->render($template);
         //unset(static::$data);
     }

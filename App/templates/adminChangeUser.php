@@ -5,6 +5,8 @@
 </head>
 <body>
 
+
+
 <form role="form" action="admin.php?ctrl=admin&act=saveUser" method="POST" class="form-horizontal novalidate">
     <fieldset>
         <legend>Сохранение(Добавление/Редактирование)/Удаление пользователя</legend>

@@ -33,20 +33,25 @@ abstract class Model
     }
 
     /**
-     * TODO для insert(), update()
+     * TODO delete()
      */
-    public function getObjectValues() {
-        $columns = [];
-        $values = [];
-        foreach($this as $k => $v) {
-            if ('id' == $k){
-                continue;
-            }
-            $columns[] = $k;
-            $values[':'.$k] = $v;
+    public function delete(){
+        $id = $this->id;
+        //$sql = ('DELETE FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id])[0];
+        //echo $sql;
+
+        $db = DB::instance();
+        $res = $db->query('DELETE FROM '.static::TABLE.' WHERE id=:id', static::class, [':id' => $id])[0];
+                var_dump($res);
+    }
+
+    public function save(){
+        if ($this->isNew()) {
+            $this->insert();
         }
-        //var_dump($values);
-        return $columns.$values;
+        else {
+            $this->update();
+        }
     }
 
     public function insert(){
@@ -63,26 +68,18 @@ abstract class Model
             $columns[] = $k;
             $values[':'.$k] = $v;
         }
-        var_dump($values);
+        //var_dump($values);
 
 
         $sql = 'INSERT INTO '.static::TABLE.' ('.
         implode(',', $columns).') VALUES ('.
         implode(',', array_keys($values)).')';
-        echo $sql;
+        //echo $sql;
         $db = DB::instance();
         $db->execute($sql, $values);
 
     }
 
-    public function save(){
-        if ($this->isNew()) {
-            $this->insert();
-        }
-        else {
-            $this->update();
-        }
-    }
 
     public function update() {
         if ($this->isNew()) {
