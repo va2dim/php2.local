@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\News;
 use App\View;
 */
+//use App\Controllers\Index;
 
 //TODO HT4. разобрать REQUEST_URI на Controller и action и проверить (на стороне Apache) нет ли запроса реального файла или папки (.css, .js)
 // index.php?ctrl=CTRL&act=ACT
@@ -18,7 +19,8 @@ preg_match_all(
     $matches
 );
 //echo $matches['ctrl'][0].$matches['act'][0];
-
+echo 'REQUEST_URI: ';
+var_dump($matches);
 
 /**
  * FrontController - единая т.входа на сайт
@@ -35,10 +37,10 @@ echo '<br>_REQUEST: ';
 var_dump($_REQUEST);
 echo '<hr>';
 
-$controller = new App\Controllers\News();
-//var_dump($_GET['ctrl']);
 
-
+$fullCtrlName = '\App\Controllers\\'.$ctrl;
+var_dump($fullCtrlName);
+$controller = new $fullCtrlName;
 $controller->action($act);
 
 /*

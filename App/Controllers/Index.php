@@ -16,8 +16,6 @@ class Index
 
     public function __construct(){
         $this->view = new View();
-
-        //$this->view->errors  = new MultiException();
     }
 
     /**
@@ -29,16 +27,15 @@ class Index
     public function action($action){
         $methodName = 'action'.$action;
         $this->beforeAction();
-        //var_dump($methodName);
-
-
 
         try {
             return $this->$methodName();
         } catch (MultiException $e) {
             $this->view->errors = $e;
+            $this->view->display(__DIR__ . '/../templates/exceptions.php');
         }
-        $this->view->display(__DIR__ . '/../templates/exceptions.php');
+
+
 
 
 
@@ -57,6 +54,12 @@ class Index
 
         }
         */
+    }
+
+    protected function actionIndex() {
+        //$this->view->news = News::findLast(3);
+        $this->view->news = \App\Models\News::findAll();
+        $this->view->display(__DIR__ . '/../templates/index.php');
     }
 
     public function beforeAction(){
