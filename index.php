@@ -13,14 +13,32 @@ use App\View;
 // index.php?ctrl=CTRL&act=ACT
 
 $url = $_SERVER['REQUEST_URI'];
+
+echo '<br>??? QUERY_STRING: ';
+var_dump($_SERVER['QUERY_STRING']);
+
+/*
 preg_match_all(
     '`ctrl=(?P<ctrl>.+)&act=(?P<act>.+)`',
     $url,
     $matches
 );
+*/
+
+/*
+preg_match_all(
+    '`ctrl=(?P<ctrl>.+)&act=(?P<act>.+)`',
+    $url,
+    $matches
+);
+*/
 //echo $matches['ctrl'][0].$matches['act'][0];
-echo 'REQUEST_URI: ';
+/*
+
 var_dump($matches);
+*/
+echo '<br>REQUEST_URI: ';
+echo $url;
 
 /**
  * FrontController - единая т.входа на сайт
@@ -29,7 +47,7 @@ var_dump($matches);
 $ctrl = $_GET['ctrl'] ?: 'Index';
 $act = $_GET['act'] ?: 'Index';
 
-echo '_GET: ';
+echo '<br>_GET: ';
 var_dump($_GET);
 echo '<br>_POST: ';
 var_dump($_POST);

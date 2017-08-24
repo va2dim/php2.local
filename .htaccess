@@ -1,3 +1,22 @@
 RewriteEngine On
 
-RewriteRule ^.*$ index.php [L]
+#RewriteRule ^$ index.php [QSA,L]
+
+#Don't favicon!
+RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} (.+)ctrl=(.+)&act=(.+)&id=(.+)$
+#RewriteRule ^ %1 [R,QSA,L]
+
+RewriteCond %{REQUEST_URI} (.+)/$
+#RewriteRule ^(.*)/$ $1 [R,L]
+RewriteRule ^ /%1 [R,L] <-- added slash here too, don't forget it <- for test, for prod use [L,R=301]
+
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)$ index.php?ctrl=$1&act=$2&id=$3 [QSA,L]
+RewriteRule ^([^/]+)/([^/]+)$ index.php?ctrl=$1&act=$2 [QSA,L]
+#RewriteRule ^([^/]+)/(.*)$ index.php?ctrl=$1&act=$2 [L]
+RewriteRule ^([^/]+)$ index.php?ctrl=$1 [QSA,L]
+
